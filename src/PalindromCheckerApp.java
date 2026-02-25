@@ -1,5 +1,3 @@
-import java.util.*;
-
 class Node {
     int data;
     Node next;
@@ -9,24 +7,22 @@ class Node {
     }
 }
 
-public class PalindromeLL {
-    static boolean isPalindrome(Node head) {
-        Stack<Integer> s = new Stack<>();
-        Node temp = head;
+public class PalindromeRecursion {
 
-        while (temp != null) {
-            s.push(temp.data);
-            temp = temp.next;
-        }
+    static Node left;
 
-        temp = head;
+    static boolean isPalindrome(Node right) {
+        if (right == null)
+            return true;
 
-        while (temp != null) {
-            if (temp.data != s.pop())
-                return false;
-            temp = temp.next;
-        }
+        boolean result = isPalindrome(right.next);
+        if (!result)
+            return false;
 
+        if (left.data != right.data)
+            return false;
+
+        left = left.next;
         return true;
     }
 
@@ -35,6 +31,8 @@ public class PalindromeLL {
         head.next = new Node(2);
         head.next.next = new Node(2);
         head.next.next.next = new Node(1);
+
+        left = head;
 
         if (isPalindrome(head))
             System.out.println("Palindrome");
