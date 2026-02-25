@@ -1,31 +1,14 @@
-import java.util.Scanner;
-import java.util.Stack;
+import java.util.*;
 
-public class PalindromeCheckerApp {
-
+public class FIFOExample {
     public static void main(String[] args) {
+        Queue<Integer> q = new LinkedList<>();
 
-        Scanner sc = new Scanner(System.in);
+        q.add(10);
+        q.add(20);
+        q.add(30);
 
-        System.out.print("Input text: ");
-        String input = sc.nextLine();
-
-        Stack<Character> stack = new Stack<>();
-
-        for (int i = 0; i < input.length(); i++) {
-            stack.push(input.charAt(i));
-        }
-
-        String reversed = "";
-
-        while (!stack.isEmpty()) {
-            reversed += stack.pop();
-        }
-
-        boolean isPalindrome = input.equals(reversed);
-
-        System.out.println("Is it a Palindrome? : " + isPalindrome);
-
-        sc.close();
+        System.out.println("Removed: " + q.remove());
+        System.out.println("Queue: " + q);
     }
 }
