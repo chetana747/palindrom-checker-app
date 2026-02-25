@@ -1,14 +1,44 @@
 import java.util.*;
 
-public class DequeExample {
+class Node {
+    int data;
+    Node next;
+    Node(int d) {
+        data = d;
+        next = null;
+    }
+}
+
+public class PalindromeLL {
+    static boolean isPalindrome(Node head) {
+        Stack<Integer> s = new Stack<>();
+        Node temp = head;
+
+        while (temp != null) {
+            s.push(temp.data);
+            temp = temp.next;
+        }
+
+        temp = head;
+
+        while (temp != null) {
+            if (temp.data != s.pop())
+                return false;
+            temp = temp.next;
+        }
+
+        return true;
+    }
+
     public static void main(String[] args) {
-        Deque<Integer> dq = new ArrayDeque<>();
+        Node head = new Node(1);
+        head.next = new Node(2);
+        head.next.next = new Node(2);
+        head.next.next.next = new Node(1);
 
-        dq.addFirst(10);
-        dq.addLast(20);
-        dq.addLast(30);
-
-        System.out.println("Front element: " + dq.peekFirst());
-        System.out.println("Rear element: " + dq.peekLast());
+        if (isPalindrome(head))
+            System.out.println("Palindrome");
+        else
+            System.out.println("Not Palindrome");
     }
 }
