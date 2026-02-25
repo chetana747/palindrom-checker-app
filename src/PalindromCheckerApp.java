@@ -1,14 +1,14 @@
 import java.util.*;
 
-public class FIFOExample {
+public class DequeExample {
     public static void main(String[] args) {
-        Queue<Integer> q = new LinkedList<>();
+        Deque<Integer> dq = new ArrayDeque<>();
 
-        q.add(10);
-        q.add(20);
-        q.add(30);
+        dq.addFirst(10);
+        dq.addLast(20);
+        dq.addLast(30);
 
-        System.out.println("Removed: " + q.remove());
-        System.out.println("Queue: " + q);
+        System.out.println("Front element: " + dq.peekFirst());
+        System.out.println("Rear element: " + dq.peekLast());
     }
 }
