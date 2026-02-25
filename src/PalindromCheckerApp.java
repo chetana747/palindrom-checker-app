@@ -3,7 +3,6 @@ class Node {
     Node next;
     Node(int d) {
         data = d;
-        next = null;
     }
 }
 
@@ -11,12 +10,11 @@ public class PalindromeRecursion {
 
     static Node left;
 
-    static boolean isPalindrome(Node right) {
+    static boolean check(Node right) {
         if (right == null)
             return true;
 
-        boolean result = isPalindrome(right.next);
-        if (!result)
+        if (!check(right.next))
             return false;
 
         if (left.data != right.data)
@@ -34,7 +32,7 @@ public class PalindromeRecursion {
 
         left = head;
 
-        if (isPalindrome(head))
+        if (check(head))
             System.out.println("Palindrome");
         else
             System.out.println("Not Palindrome");
